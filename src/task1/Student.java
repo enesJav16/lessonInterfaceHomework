@@ -1,8 +1,9 @@
 package task1;
 
 import java.time.LocalDate;
+import java.time.Period;
 
-public class Student {
+public class Student implements Study{
     private String name;
     private String surname;
     private String gender;
@@ -56,5 +57,16 @@ public class Student {
 
     public void setEducationCenter(EducationCenter educationCenter) {
         this.educationCenter = educationCenter;
+    }
+
+    @Override
+    public EducationCenter getStudentEducationCenter() {
+        return educationCenter;
+    }
+
+    @Override
+    public int getStudentStudyingYear() {
+        Period period=Period.between(startDate,LocalDate.now());
+        return period.getYears();
     }
 }
